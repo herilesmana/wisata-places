@@ -1,11 +1,31 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native';
+
+// Import data tempatWisata
+import { tempatWisata } from '../../data/tempatWisata';
+import { useNavigation } from 'expo-router';
+import { Image } from 'expo-image';
 
 export default function Index() {
+  const navigation = useNavigation();
+
+  const renderItem = ({ item }: { item: { id: number; imageUrl: string; title: string; description: string } }) => (
+    <TouchableOpacity
+      style={styles.itemContainer}
+      onPress={() => {}}
+    >
+      <Image source={{ uri: item.imageUrl }} style={styles.image} />
+      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.description}>{item.description}</Text>
+    </TouchableOpacity>
+  );
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>
-        Here you can find the best places to visit in Indonesia.
-      </Text>
+      <FlatList
+        data={tempatWisata}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={renderItem}
+      />
     </View>
   );
 }
@@ -13,11 +33,23 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#25292e',
+    // backgroundColor: '#25292e',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 15,
   },
   text: {
-    color: '#fff',
+    // color: '#fff',
   },
+  itemContainer: {
+    marginBottom: 15,
+    marginLeft: 15,
+    marginRight: 15,
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: '#fefefe',
+  },
+  image: { width: '100%', height: 200, borderRadius: 10 },
+  title: { fontSize: 18, fontWeight: 'bold', marginTop: 10 },
+  description: { fontSize: 14, color: '#555' },
 });

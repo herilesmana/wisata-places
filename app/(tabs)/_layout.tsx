@@ -21,16 +21,16 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color={color} size={24} />
+            <Ionicons name={focused ? 'home' : 'home-outline'} color={color} size={24} />
           ),
         }}
       />
       <Tabs.Screen
-        name="places"
+        name="places/index"
         options={{
           title: 'Places',
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'map-sharp' : 'map-outline'} color={color} size={24} />
+            <Ionicons name={focused ? 'map' : 'map-outline'} color={color} size={24} />
           ),
         }}
       />

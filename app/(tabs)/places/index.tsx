@@ -1,17 +1,17 @@
 import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native';
 
 // Import data tempatWisata
-import { tempatWisata } from '../../data/tempatWisata';
-import { useNavigation } from 'expo-router';
+import { tempatWisata } from '../../../data/tempatWisata';
+import { Href, useRouter } from 'expo-router';
 import { Image } from 'expo-image';
 
 export default function Index() {
-  const navigation = useNavigation();
+  const router = useRouter();
 
   const renderItem = ({ item }: { item: { id: number; imageUrl: string; title: string; description: string } }) => (
     <TouchableOpacity
       style={styles.itemContainer}
-      onPress={() => {}}
+      onPress={() => router.push(`/places/${item.id}` as unknown as Href<string | object>)}
     >
       <Image source={{ uri: item.imageUrl }} style={styles.image} />
       <Text style={styles.title}>{item.title}</Text>

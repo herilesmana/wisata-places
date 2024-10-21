@@ -21,6 +21,7 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.text}>Daftar Tempat Wisata</Text>
       <FlatList
         data={tempatWisata}
         keyExtractor={(item) => item.id.toString()}
@@ -40,6 +41,10 @@ const styles = StyleSheet.create({
   },
   text: {
     // color: '#fff',
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 15,
+    marginTop: 15,
   },
   itemContainer: {
     marginBottom: 15,
